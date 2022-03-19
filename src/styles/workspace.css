@@ -1,0 +1,37 @@
+.wrapper{
+    width: fit-content;
+    padding: 1rem;
+    margin: 1rem;
+}  
+.container1{
+    width: fit-content;
+    padding: 1rem;
+    margin: 1rem;
+}
+.wrapper h3{
+    margin: 1rem
+    
+}
+.wrapper> h1, h3{
+    font-size: 5rem;
+    width: max-content;
+    display: inline-block;
+    color: var(--color-primary);
+    padding: 0.75rem 1.2rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    border: 1px solid var(--color-primary);
+    transition: var(--transition);
+}
+button{
+  color: black  
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper> h3{
+       margin-left: 6rem;
+    }
+    .wrapper> h1{
+        margin-right:rem;
+    }
+}

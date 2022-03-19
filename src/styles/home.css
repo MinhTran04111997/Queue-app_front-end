@@ -1,0 +1,92 @@
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 5rem;
+    margin-left: 5rem;
+    
+}
+input{
+    width: 40;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background: transparent;
+    border: 2px solid var(--color-primary-variant);
+    resize: none;
+    color: var(--color-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2rem;
+    
+}
+
+.service{
+    text-align: center;
+    margin: 1rem;
+    width: max-content;
+    height: 100%;
+    display: inline-block;
+    color: var(--color-primary);
+    padding: 0.75rem 1.2rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    border: 1px solid var(--color-primary);
+    transition: var(--transition);
+}
+
+.btnList{
+    display: flex;
+    width: fit-content;
+    left: 50%;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2.4rem 5rem;
+    border-radius: 2rem;
+    border: 1px solid transparent;
+    
+}
+
+.service> h1, h3{
+    font-size: 5rem;
+    width: max-content;
+    display: inline-block;
+    color: var(--color-primary);
+    padding: 0.75rem 1.2rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btnList> button:hover{
+    background: transparent;
+    border-color: var(--color-primary-variant);
+    cursor: default;
+}
+.detail{
+    background: var(--color-bg-variant);
+    gap: 1rem;
+    text-align: center;
+}
+h1{
+    color: white;
+}
+
+.btnList> button.active{
+    background: var(--color-bg);
+    color: var(--color-white);
+}
+
+/*====================MEDIA QUERIES(MEDIUM DEVICES)==============*/
+
+@media screen and (max-width: 1024px) {
+    .btnList{
+       width: fit-content;
+    }
+}
+/*====================MEDIA QUERIES(SMALL DEVICES)==============*/
+@media screen and (max-width: 600px) {
+    .btnList{
+        
+    }
+    
+}

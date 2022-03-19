@@ -1,0 +1,21 @@
+#wrapper{
+    overflow:auto;
+    display: flex;
+    margin-bottom: 5rem;
+}
+#c1{
+    font-size: 25px;
+    margin-top: 1rem;
+    float:left;
+}
+
+#c2{
+    margin-top: 1rem;
+    margin-left: 2rem;
+    float:right;
+}
+
+#home{
+    padding: 2rem;
+}
+
