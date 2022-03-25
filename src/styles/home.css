@@ -47,7 +47,7 @@ input{
 }
 
 .service> h1, h3{
-    font-size: 5rem;
+    font-size: 3rem;
     width: max-content;
     display: inline-block;
     color: var(--color-primary);
@@ -85,8 +85,5 @@ h1{
 }
 /*====================MEDIA QUERIES(SMALL DEVICES)==============*/
 @media screen and (max-width: 600px) {
-    .btnList{
-        
-    }
     
 }

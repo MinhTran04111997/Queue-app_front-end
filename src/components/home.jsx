@@ -24,7 +24,7 @@ const Home = () => {
         event.preventDefault()
         const customerObject ={
             phonenumber: newPhonenumber,
-            services: services[verify],
+            services: services[verify].name,
             verify: verify
         }
         homeService
@@ -37,14 +37,16 @@ const Home = () => {
     const displayService =()=>{
         return (
             services.map((service,i)=>{
-                return(
-                    <button key={i} className={active===activeList[i]? 'service active': 'service'} onClick={()=> {
-                    setActive(activeList[i])
-                    setVerify(i)
-                    console.log(verify)
-                    }}><h1>{service.toUpperCase()}</h1>
-                    </button>
-                )
+                if(service.isActive){
+                    return(
+                        <button key={i} className={active===activeList[i]? 'service active': 'service'} onClick={()=> {
+                        setActive(activeList[i])
+                        setVerify(i)
+                        console.log(verify)
+                        }}><h1>{service.name.toUpperCase()}</h1>
+                        </button>
+                    )
+                }
             })
         )
     }

@@ -19,21 +19,26 @@ const App = () =>{
       }, [])
       const match=useMatch('/workspace/:id')
       const id = match? String(match.params.id):null
-    
+      const logOutListener = () =>{
+          console.log("loged out")
+        window.localStorage.removeItem('loggedNoteappUser')
+        window.location.reload()
+      }
     return (
         <div className='container'>
             <nav id='wrapper'>
                 <div id='c1'>
                 <Link  id='home'  to="/">HOME</Link>
-                <Link className='btn btn-primary' id='workspace' to={user? "/workspace":"/login"}>WORKSPACE</Link>
+                <Link className='btn btn-primary' id='workspace' to={"/workspace"}>WORKSPACE</Link>
                 </div>
-                <Link id='c2' className='btn btn-primary'  to="/login">lOGIN</Link>
+                <Link id='c2' className='btn btn-primary'  to="/login">lOG IN</Link>
+                <button id='c2' className='btn btn-primary' onClick={()=>{logOutListener()}}>LOG OUT</button>
             </nav>
             <Routes>
                 <Route path="/workspace/:id" element={<Workspace id={id} />} />
-                <Route path="/workspace" element={<SetUpworkPlace/>} /> 
+                <Route path="/workspace" element={ <SetUpworkPlace/>} /> 
                 <Route path="/" element={<Home/>} />
-                <Route path="/login" element={user? <Navigate replace to="/workspace" />:<Login/> }/>
+                <Route path="/login" element={user? <Navigate  replace to= "/workspace"/>: <Login/> }/>
             </Routes>
         </div>
     )

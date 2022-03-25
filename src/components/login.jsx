@@ -8,12 +8,11 @@ const Login = ()=> {
   const [username, setUsername] = useState('') 
   const [password, setPassword] = useState('') 
   const [errorMessage, setErrorMessage] = useState(null)
-  const [mount, unMount]= useState(true)
   const [user, setUser] = useState(null) 
 
   const handleLogin = async (event) => {
     event.preventDefault()
-    console.log('logging in with', username, password)
+    console.log('logging in with', username)
     try {
         const user = await loginService.login({
           username, password,
@@ -24,6 +23,7 @@ const Login = ()=> {
         setUser(user)
         setUsername('')
         setPassword('')
+        window.location.reload();
       } catch (exception) {
         setErrorMessage('Wrong credentials')
         setTimeout(() => {
