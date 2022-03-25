@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import homeService from '../services/home_service'
 import '../styles/home.css'
+import {  Dropdown, DropdownButton } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {
     const [services,setServices] = useState([])
     const [newPhonenumber, setnewPhonenumber]= useState('')
-    const [verify, setVerify]=useState()
+    const [verify, setVerify]=useState(null)
     const [active, setActive]= useState('')
     const activeList = ['service1', 'service2', 'service3']
     useEffect(()=>{
@@ -34,27 +36,50 @@ const Home = () => {
             })
     }
 
+   const serviceList =[]
+   const descriptionList = []
+   services.forEach(service => {
+       serviceList.push(service.name.toUpperCase())
+       descriptionList.push(service.description)
+    } )
+   const testDisplay = () =>{
+       if(verify !== null){
+        return(
+            <div>
+                <button className='service_detail'>
+                <h4>Service Name: {serviceList[verify]}</h4>
+                 <br/>
+                {descriptionList[verify]}
+                </button>
+            </div>
+        )
+       }
+   }
     const displayService =()=>{
         return (
-            services.map((service,i)=>{
-                if(service.isActive){
-                    return(
-                        <button key={i} className={active===activeList[i]? 'service active': 'service'} onClick={()=> {
-                        setActive(activeList[i])
-                        setVerify(i)
-                        console.log(verify)
-                        }}><h1>{service.name.toUpperCase()}</h1>
-                        </button>
-                    )
-                }
-            })
+            <div>
+                <DropdownButton id="dropdown-basic-button" title="Choose a service">                
+                {services.map((service,i)=>{
+                    if(service.isActive){
+                        return(
+                            <Dropdown.Item key={i} className={active===activeList[i]? 'service active': 'service'} onClick={()=> {
+                                setActive(activeList[i])
+                                setVerify(i)
+                                }}>{service.name.toUpperCase()}</Dropdown.Item>
+                        )
+                    }
+                    return <div></div>
+                })}
+            </DropdownButton>
+            </div>
         )
     }
   return (
-    <div>
+    <div className='container-home'>
         <div className='btnList'>
             {displayService()}
         </div>
+        {testDisplay()}
         <form className='form' onSubmit={addNewcustomer} >
             <div>
                 <h1>PHONE NUMBER</h1>
@@ -62,24 +87,19 @@ const Home = () => {
             </div>
             <button className='btn btn-primary' type='submit'>submit</button>
         </form>
+        
     </div>
   )
 }
 
 export default Home
 
-/*<button className={active==='service1'? 'service active': 'service'} onClick={()=> {
-                setActive('service1')
-                setVerify(0)
-                console.log(verify)
-                }}><h1>{services[0]}</h1></button>
-            <button className={active==='service2'? 'service active': 'service'} onClick={()=> {
-                setActive('service2')
-                setVerify(1)
-                console.log(verify)
-                }}><h1>{services[1]}</h1></button>
-            <button className={active==='service3'? 'service active': 'service'} onClick={()=> {
-                setActive('service3')
-                setVerify(2)
-                console.log(verify)
-                }}><h1>{services[2]}</h1></button>*/
+/*
+<Dropdown.item key={i} className={active===activeList[i]? 'service active': 'service'} onClick={()=> {
+                        setActive(activeList[i])
+                        setVerify(i)
+                        console.log(verify)
+                        }}><h1>{service.name.toUpperCase()}</h1>
+                        </Dropdown.item>
+                         Service Name: <h1>{copyServices[1].name.toUpperCase()}</h1> 
+ */

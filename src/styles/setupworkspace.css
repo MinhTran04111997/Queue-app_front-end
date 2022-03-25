@@ -11,3 +11,11 @@
     border: 1px solid var(--color-primary);
     transition: var(--transition);
 }
+
+.description{
+    padding: 1rem;
+    margin-top: 1rem;
+}
+.container{
+    display: grid;
+}

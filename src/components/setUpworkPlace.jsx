@@ -9,6 +9,7 @@ import update from 'react-addons-update';
 
 const SetUpworkPlace = () => {
   const [serviceName, setserviceName]=useState('')
+  const [serviceDescription, setServiceDescription]=useState('')
   const [serviceList, setserviceList]=useState([])
   const [currentCount, setcurrentCount]=useState([])
   const [isActiveList, setIsActiveList] = useState ([])
@@ -32,9 +33,15 @@ const SetUpworkPlace = () => {
     setserviceName(event.target.value)
   } 
 
+  const handleContentChange = (event) => {
+    console.log(event.target.value)
+    setServiceDescription(event.target.value)
+  } 
+
   const addService=()=>{
     const newObject ={
-      name: serviceName
+      name: serviceName,
+      description: serviceDescription
     }
     setUp
         .serVice(newObject)
@@ -113,11 +120,12 @@ const SetUpworkPlace = () => {
       )
   }
   return (
-    <div>
+    <div className='container'>
       <form onSubmit={addService} >
             <div>
-                Service Name  
+                <h4>SERVICE NAME</h4>
                 <input value={serviceName} onChange={handleNameChange} placeholder='Service Name' required />
+                <textarea value={serviceDescription} onChange={handleContentChange} className='description' rows="7" placeholder='Description' required></textarea>
             </div>
             <button className='btn btn-primary' type='submit'>ADD</button>
         </form>
