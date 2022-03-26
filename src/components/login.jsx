@@ -31,9 +31,6 @@ const Login = ()=> {
         }, 5000)
       }
   }
-  const navigate =()=>{
-      if(user) return <Navigate  replace to= "/workspace"/>
-  }
   return(
       <div>
         <Notification message={errorMessage} />
@@ -58,9 +55,7 @@ const Login = ()=> {
         </div>
         <button className='btn btn-primary' type="submit">login</button>
       </form>
-      {navigate()}
       </div>
   )
 }
-
 export default Login

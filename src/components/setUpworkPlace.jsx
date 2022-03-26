@@ -79,7 +79,7 @@ const SetUpworkPlace = () => {
   const disPlay =()=>{
       return(
         serviceList.map((service,i) =>
-            <li key={i}>
+            <li className='service-detail' key={i}>
               <ToggleButton
               colors={{
                 activeThumb: {
@@ -120,7 +120,7 @@ const SetUpworkPlace = () => {
       )
   }
   return (
-    <div className='container'>
+    <div className='container_setup'>
       <form onSubmit={addService} >
             <div>
                 <h4>SERVICE NAME</h4>
@@ -129,7 +129,7 @@ const SetUpworkPlace = () => {
             </div>
             <button className='btn btn-primary' type='submit'>ADD</button>
         </form>
-        <div>{disPlay()}</div>
+        <div className='container_list'>{disPlay()}</div>
     </div>
   )
 }
