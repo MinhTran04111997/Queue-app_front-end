@@ -31,6 +31,21 @@ input, textarea{
     row-gap: 2rem;
     
 }
+.datepicker{
+    background-color: white;
+    border-radius: 0.4rem;
+    color: var(--color-primary);
+    padding: 0.75rem 1.2rem;
+    cursor: pointer;
+    border: 1px solid var(--color-primary);
+    transition: var(--transition);
+}
+.popup{
+    margin-left: 1rem;
+}
+.btnList{
+    display: flex;
+}
 .btnList> button:hover{
     background: transparent;
     border-color: var(--color-primary-variant);

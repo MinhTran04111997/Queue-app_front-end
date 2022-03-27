@@ -6,24 +6,23 @@ const setToken = newToken => {
   token = `bearer ${newToken}`
 }
 
-const getAll = (baseUrl) => {
+const getAll = async (baseUrl) => {
     const config = {
         headers: { Authorization: token },
     }
     const request = axios.get(baseUrl, config)
-    return request.then(response => response.data)
+    const response = await request
+    return response.data
 }
 
-const serVice = (baseUrl) =>{
+const serVice = async (baseUrl) =>{
     const config = {
         headers: { Authorization: token },
     }
-    const request = axios.put(baseUrl, config)
-    return request.then(response => response.data)
+    const body= null
+    const request = axios.put(baseUrl,body, config)
+    const response = await request
+    return response.data
 }
 
-export default{
-    getAll: getAll,
-    serVice: serVice,
-    setToken: setToken
-}
+export default{getAll, serVice, setToken}

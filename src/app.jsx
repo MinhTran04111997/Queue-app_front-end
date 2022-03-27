@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Link, Route, Routes, Navigate, useMatch, Switch  } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route, Routes, Navigate, useMatch  } from 'react-router-dom'
 import Home from './components/home'
 import Login from './components/login'
 import SetUpworkPlace from './components/setUpworkPlace'
@@ -10,13 +10,10 @@ import './styles/nav.css'
 
   
 const App = () =>{
-    const [user, setUser] = useState(null)
     const [isAuthenticated, userHasAuthenticated] = useState(false)
     useEffect(() => {
         const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser')
         if (loggedUserJSON) {
-          const user = JSON.parse(loggedUserJSON)
-          setUser(user)
           userHasAuthenticated(true)
         }
       }, [])

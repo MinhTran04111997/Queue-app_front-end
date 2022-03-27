@@ -1,14 +1,16 @@
 import axios from 'axios'
 const baseUrl = ''
 
-const getAll = () => {
+const getAll = async () => {
     const request = axios.get(`${baseUrl}/api/services`)
-    return request.then(response => response.data)
+    const response = await request
+    return response.data
 }
 
-const cusTomer = (newCustomer) =>{
+const cusTomer = async (newCustomer) =>{
     const request = axios.post(`${baseUrl}/api/customer`, newCustomer)
-    return request.then(response => response.data)
+    const response = await request
+    return response.data
 }
 
 export default{

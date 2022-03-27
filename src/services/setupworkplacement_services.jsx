@@ -7,41 +7,39 @@ const setToken = newToken => {
   token = `bearer ${newToken}`
 }
 
-const getAll = () => {
+const getAll = async () => {
   const config = {
     headers: { Authorization: token },
   }
   const request = axios.get(`${baseUrl}/api/workspace`, config)
-  return request.then(response => response.data)
+  const response = await request
+  return response.data
 }
 
-const serVice = (newCustomer) =>{
+const serVice = async (newCustomer) =>{
   const config = {
     headers: { Authorization: token },
   }
   const request = axios.post(`${baseUrl}/api/workspace`, newCustomer, config)
-  return request.then(response => response.data)
+  const response = await request
+  return response.data
 }
 
-const editService = (editContent)=>{
+const editService = async (editContent)=>{
   const config = {
     headers: { Authorization: token },
   }
   const request = axios.put(`${baseUrl}/api/workspace`, editContent, config)
-  return request.then(response => response.data)
+  const response = await request
+  return response.data
 }
 
-const toggleButton = (toggle)=>{
+const toggleButton = async (toggle)=>{
   const config = {
     headers: { Authorization: token },
   }
   const request = axios.put(`${baseUrl}/api/workspace/toggle/change`, toggle, config)
-  return request.then(response => response.data)
+  const response = await request
+  return response.data
 }
-export default{
-  getAll: getAll,
-  serVice: serVice,
-  editService: editService,
-  toggleButton: toggleButton,
-  setToken: setToken
-}
+export default{getAll, serVice, editService, toggleButton, setToken}

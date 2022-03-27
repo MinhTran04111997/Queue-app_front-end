@@ -34,7 +34,7 @@ const clickNext=()=>{
         <h3>{service.currentNumber}</h3>
         <h3>{totalQueue}</h3>
       </div>
-      <button className='btn btn-primary' onClick={clickNext}>Tiep Theo</button>
+      <button className='btn btn-primary' onClick={clickNext}>NEXT</button>
     </div>
   )
 }

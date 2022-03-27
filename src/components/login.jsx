@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import loginService from '../services/login_services'
 import Notification from './notification'
-import { Navigate, Link } from "react-router-dom";
-import { render } from '@testing-library/react';
+
 
 const Login = ()=> {
   const [username, setUsername] = useState('') 
   const [password, setPassword] = useState('') 
   const [errorMessage, setErrorMessage] = useState(null)
-  const [user, setUser] = useState(null) 
 
   const handleLogin = async (event) => {
     event.preventDefault()
@@ -20,7 +18,6 @@ const Login = ()=> {
         window.localStorage.setItem(
           'loggedNoteappUser', JSON.stringify(user)
         )
-        setUser(user)
         setUsername('')
         setPassword('')
         window.location.reload();

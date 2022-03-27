@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import homeService from '../services/home_service'
 import '../styles/home.css'
-import {  Dropdown, DropdownButton } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {  Dropdown, DropdownButton } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { DayPicker } from 'react-day-picker'
+import 'react-day-picker/dist/style.css'
+import { FaRegCalendarAlt } from 'react-icons/fa'
+import Popup from 'reactjs-popup'
+import fi from 'date-fns/locale/fi'
 
 const Home = () => {
     const [services,setServices] = useState([])
     const [newPhonenumber, setnewPhonenumber]= useState('')
     const [verify, setVerify]=useState(null)
     const [active, setActive]= useState('')
+    const [selectedDay, setSelectedDay] = useState(Date);
     const activeList = ['service1', 'service2', 'service3']
+    
     useEffect(()=>{
         homeService
             .getAll()
@@ -27,7 +34,8 @@ const Home = () => {
         const customerObject ={
             phonenumber: newPhonenumber,
             services: services[verify].name,
-            verify: verify
+            verify: verify,
+            date: selectedDay
         }
         homeService
             .cusTomer(customerObject)
@@ -74,12 +82,35 @@ const Home = () => {
             </div>
         )
     }
+    
+    const calendarPopup = () =>{
+        const date = new Date
+        console.log(date.getFullYear())
+        console.log(date)
+        return (
+            <Popup trigger={<button className='btn btn-primary'> <FaRegCalendarAlt/></button>} 
+              position="right center">
+            <DayPicker className='datepicker'
+                fromDate={date} toYear={2030}
+                mode="single"
+                required
+                selected={selectedDay}
+                onSelect={setSelectedDay}
+                captionLayout="dropdown"
+                locale={fi}
+            />         
+            </Popup>
+        )
+    }
   return (
     <div className='container-home'>
         <div className='btnList'>
             {displayService()}
+            <div className='popup'>{calendarPopup()}</div>
         </div>
+        
         {testDisplay()}
+        
         <form className='form' onSubmit={addNewcustomer} >
             <div>
                 <h1>PHONE NUMBER</h1>
@@ -94,12 +125,3 @@ const Home = () => {
 
 export default Home
 
-/*
-<Dropdown.item key={i} className={active===activeList[i]? 'service active': 'service'} onClick={()=> {
-                        setActive(activeList[i])
-                        setVerify(i)
-                        console.log(verify)
-                        }}><h1>{service.name.toUpperCase()}</h1>
-                        </Dropdown.item>
-                         Service Name: <h1>{copyServices[1].name.toUpperCase()}</h1> 
- */
