@@ -50,7 +50,7 @@ const Home = () => {
        serviceList.push(service.name.toUpperCase())
        descriptionList.push(service.description)
     } )
-   const testDisplay = () =>{
+   const descriptionDisplay = () =>{
        if(verify !== null){
         return(
             <div>
@@ -109,7 +109,7 @@ const Home = () => {
             <div className='popup'>{calendarPopup()}</div>
         </div>
         
-        {testDisplay()}
+        {descriptionDisplay()}
         
         <form className='form' onSubmit={addNewcustomer} >
             <div>
