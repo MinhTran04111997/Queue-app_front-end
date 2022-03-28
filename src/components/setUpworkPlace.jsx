@@ -8,6 +8,10 @@ import ToggleButton from 'react-toggle-button'
 import update from 'react-addons-update';
 import {  Dropdown, DropdownButton } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { DayPicker } from 'react-day-picker'
+import 'react-day-picker/dist/style.css'
+import fi from 'date-fns/locale/fi'
+import { FaRegCalendarAlt } from 'react-icons/fa'
 
 const SetUpworkPlace = () => {
   const [serviceName, setserviceName]=useState('')
@@ -16,6 +20,7 @@ const SetUpworkPlace = () => {
   const [verify, setVerify]=useState(null)
   const [currentCount, setcurrentCount]=useState([])
   const [isActiveList, setIsActiveList] = useState ([])
+  const [selectedDay, setSelectedDay] = useState(Date);
   
   useEffect(()=>{
     const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser')
@@ -147,6 +152,24 @@ const SetUpworkPlace = () => {
        }
    }
 
+   const calendarPopup = () =>{
+    const date = new Date
+    return (
+        <Popup trigger={<button className='btn btn-primary'> <FaRegCalendarAlt/></button>} 
+          position="right center">
+        <DayPicker className='datepicker'
+            fromDate={date} toYear={2030}
+            mode="single"
+            required
+            selected={selectedDay}
+            onSelect={setSelectedDay}
+            captionLayout="dropdown"
+            locale={fi}
+        />         
+        </Popup>
+    )
+}
+
   return (
     <div className='container_setup'>
       <form onSubmit={addService} >
@@ -157,7 +180,10 @@ const SetUpworkPlace = () => {
             </div>
             <button className='btn btn-primary' type='submit'>ADD</button>
         </form>
-        <div className='container_list'>{disPlay()}</div>
+        <div className='container_list'>
+          {disPlay()}
+          <div className='popup'>{calendarPopup()}</div>
+          </div>
         <div className='service_detail_setup'>{descriptionDisplay()}</div>
         
     </div>

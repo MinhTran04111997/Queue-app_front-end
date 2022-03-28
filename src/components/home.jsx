@@ -3,10 +3,10 @@ import homeService from '../services/home_service'
 import '../styles/home.css'
 import {  Dropdown, DropdownButton } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { DayPicker } from 'react-day-picker'
-import 'react-day-picker/dist/style.css'
 import { FaRegCalendarAlt } from 'react-icons/fa'
 import Popup from 'reactjs-popup'
+import { DayPicker } from 'react-day-picker'
+import 'react-day-picker/dist/style.css'
 import fi from 'date-fns/locale/fi'
 
 const Home = () => {
@@ -16,6 +16,7 @@ const Home = () => {
     const [active, setActive]= useState('')
     const [selectedDay, setSelectedDay] = useState(Date);
     const activeList = ['service1', 'service2', 'service3']
+    
     
     useEffect(()=>{
         homeService
@@ -31,6 +32,8 @@ const Home = () => {
 
     const addNewcustomer = (event)=>{
         event.preventDefault()
+        console.log(selectedDay)
+        console.log(selectedDay.toISOString())
         const customerObject ={
             phonenumber: newPhonenumber,
             services: services[verify].name,
@@ -85,8 +88,6 @@ const Home = () => {
     
     const calendarPopup = () =>{
         const date = new Date
-        console.log(date.getFullYear())
-        console.log(date)
         return (
             <Popup trigger={<button className='btn btn-primary'> <FaRegCalendarAlt/></button>} 
               position="right center">

@@ -16,6 +16,15 @@ const getAll = async () => {
   return response.data
 }
 
+const getbyDate = async () =>{
+  const config = {
+    headers: { Authorization: token },
+  }
+  const request = axios.get(`${baseUrl}/api/workspace/date`, config)
+  const response = await request
+  return response.data
+}
+
 const serVice = async (newCustomer) =>{
   const config = {
     headers: { Authorization: token },
@@ -42,4 +51,4 @@ const toggleButton = async (toggle)=>{
   const response = await request
   return response.data
 }
-export default{getAll, serVice, editService, toggleButton, setToken}
+export default{getAll, getbyDate, serVice, editService, toggleButton, setToken}
