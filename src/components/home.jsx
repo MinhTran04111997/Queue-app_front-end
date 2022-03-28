@@ -8,13 +8,14 @@ import Popup from 'reactjs-popup'
 import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/dist/style.css'
 import fi from 'date-fns/locale/fi'
+import { format, compareAsc } from 'date-fns'
 
 const Home = () => {
     const [services,setServices] = useState([])
     const [newPhonenumber, setnewPhonenumber]= useState('')
     const [verify, setVerify]=useState(null)
     const [active, setActive]= useState('')
-    const [selectedDay, setSelectedDay] = useState(Date);
+    const [selectedDay, setSelectedDay] = useState();
     const activeList = ['service1', 'service2', 'service3']
     
     
@@ -31,14 +32,15 @@ const Home = () => {
     }
 
     const addNewcustomer = (event)=>{
+        const dateFormat=format(new Date(selectedDay), 'MM-dd-yyyy')
+        const date = new Date(dateFormat)
+        date.setDate(date.getDate()+1)
         event.preventDefault()
-        console.log(selectedDay)
-        console.log(selectedDay.toISOString())
         const customerObject ={
             phonenumber: newPhonenumber,
             services: services[verify].name,
             verify: verify,
-            date: selectedDay
+            date: date
         }
         homeService
             .cusTomer(customerObject)
