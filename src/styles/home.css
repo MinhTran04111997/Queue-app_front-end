@@ -64,7 +64,10 @@ h1{
     background: var(--color-bg);
     color: var(--color-white);
 }
-
+.error{
+    color: red;
+    margin-top: 1rem;
+}
 /*====================MEDIA QUERIES(MEDIUM DEVICES)==============*/
 
 @media screen and (max-width: 1024px) {

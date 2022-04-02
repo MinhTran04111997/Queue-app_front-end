@@ -8,7 +8,8 @@ import Popup from 'reactjs-popup'
 import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/dist/style.css'
 import fi from 'date-fns/locale/fi'
-import { format, compareAsc } from 'date-fns'
+import validator from 'validator' 
+
 
 const Home = () => {
     const [services,setServices] = useState([])
@@ -16,6 +17,7 @@ const Home = () => {
     const [verify, setVerify]=useState(null)
     const [active, setActive]= useState('')
     const [selectedDay, setSelectedDay] = useState();
+    const [errorMessage, seterrorMessage] = useState()
     const activeList = ['service1', 'service2', 'service3']
     
     
@@ -26,27 +28,32 @@ const Home = () => {
                 setServices(initialServices)
             })
     },[])
-    const handleNumberChange = (event) => {
+    const handleNumberChange =  (event) => {
         console.log(event.target.value)
         setnewPhonenumber(event.target.value)
     }
-
-    const addNewcustomer = (event)=>{
-        const dateFormat=format(new Date(selectedDay), 'MM-dd-yyyy')
-        const date = new Date(dateFormat)
-        date.setDate(date.getDate()+1)
+    const addNewcustomer = async (event)=>{
+        //const dateFormat=format(new Date(selectedDay), 'MM-dd-yyyy')
+        //const date = new Date(dateFormat)
+        //date.setDate(date.getDate()+1)
         event.preventDefault()
-        const customerObject ={
-            phonenumber: newPhonenumber,
-            services: services[verify].name,
-            verify: verify,
-            date: date
-        }
-        homeService
-            .cusTomer(customerObject)
-            .then(()=>{
-                setnewPhonenumber('')
-            })
+        if( verify !== null && validator.isMobilePhone(newPhonenumber) && newPhonenumber.length>5 && selectedDay){
+            seterrorMessage()
+            const customerObject ={
+                phonenumber: newPhonenumber,
+                services: services[verify].name,
+                verify: verify,
+                date: selectedDay
+            }
+            homeService
+                .cusTomer(customerObject)
+                .then(()=>{
+                    setnewPhonenumber('')
+                })
+        }else{
+            seterrorMessage('invalid mobile phone or have not chosen a service and date')
+        }   
+        
     }
 
    const serviceList =[]
@@ -71,11 +78,11 @@ const Home = () => {
     const displayService =()=>{
         return (
             <div>
-                <DropdownButton id="dropdown-basic-button" title="Choose a service">                
+                <DropdownButton id="dropdown-basic-button" title={verify === null? "Choose a service": serviceList[verify]}>                
                 {services.map((service,i)=>{
                     if(service.isActive){
                         return(
-                            <Dropdown.Item key={i} className={active===activeList[i]? 'service active': 'service'} onClick={()=> {
+                            <Dropdown.Item required key={i} className={active===activeList[i]? 'service active': 'service'} onClick={()=> {
                                 setActive(activeList[i])
                                 setVerify(i)
                                 }}>{service.name.toUpperCase()}</Dropdown.Item>
@@ -83,6 +90,9 @@ const Home = () => {
                     }
                     return <div></div>
                 })}
+                <Dropdown.Item onClick={()=>{
+                    setVerify(null)
+                }}>NONE</Dropdown.Item>
             </DropdownButton>
             </div>
         )
@@ -121,7 +131,7 @@ const Home = () => {
             </div>
             <button className='btn btn-primary' type='submit'>submit</button>
         </form>
-        
+        {errorMessage && <p className='error'>{errorMessage}</p>}
     </div>
   )
 }

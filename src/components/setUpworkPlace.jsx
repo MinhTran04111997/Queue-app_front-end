@@ -89,7 +89,7 @@ const SetUpworkPlace = () => {
 
   const disPlay =()=>{
       return(
-        <DropdownButton id="dropdown-basic-button" title="Choose a service">
+        <DropdownButton id="dropdown-basic-button" title={verify === null? "Choose a service": serviceList[verify].name}>
         {serviceList.map((service,i) =>{
           return(
               <Dropdown.Item key={i}  onClick={()=> {
