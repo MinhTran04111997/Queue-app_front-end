@@ -18,6 +18,7 @@ const Home = () => {
     const [active, setActive]= useState('')
     const [selectedDay, setSelectedDay] = useState();
     const [errorMessage, seterrorMessage] = useState()
+    const [registerMessage, setRegisterMessage] = useState()
     const activeList = ['service1', 'service2', 'service3']
     
     
@@ -47,7 +48,8 @@ const Home = () => {
             }
             homeService
                 .cusTomer(customerObject)
-                .then(()=>{
+                .then((response)=>{
+                    setRegisterMessage(response.message)
                     setnewPhonenumber('')
                 })
         }else{
@@ -117,13 +119,12 @@ const Home = () => {
     }
   return (
     <div className='container-home'>
+        {registerMessage && <p className='success'>{registerMessage}</p>}
         <div className='btnList'>
             {displayService()}
             <div className='popup'>{calendarPopup()}</div>
         </div>
-        
         {descriptionDisplay()}
-        
         <form className='form' onSubmit={addNewcustomer} >
             <div>
                 <h1>PHONE NUMBER</h1>

@@ -68,6 +68,10 @@ h1{
     color: red;
     margin-top: 1rem;
 }
+.success{
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
 /*====================MEDIA QUERIES(MEDIUM DEVICES)==============*/
 
 @media screen and (max-width: 1024px) {
