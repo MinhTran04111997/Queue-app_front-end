@@ -19,6 +19,8 @@ const SetUpworkPlace = () => {
   const [serviceList, setserviceList]=useState([])
   const [verify, setVerify]=useState(null)
   const [currentCount, setcurrentCount]=useState([])
+  const [countbyDay, setcountbyDay]= useState([])
+  const [dateStatus, setdateStatus]=useState()
   const [isActiveList, setIsActiveList] = useState ([])
   const [selectedDay, setSelectedDay] = useState(Date);
   
@@ -135,7 +137,8 @@ const SetUpworkPlace = () => {
             }}
             />
             <Link className='btnWorkspace' to={`/workspace/${serviceList[verify].id}`}>
-                Service Name: <h1>{serviceListcopy[verify]}</h1>  Total Queue: <h2>{currentCount[verify]}</h2>
+                Service Name: <h1>{serviceListcopy[verify]}</h1>  Total Queue: <h2>{selectedDay==null? currentCount[verify]: countbyDay[verify]}</h2>
+                Date: <h2>{dateStatus}</h2>
             </Link>
             <Popup trigger={<button className='btn btn-primary'> EDIT </button>} 
               position="right center">
@@ -152,6 +155,17 @@ const SetUpworkPlace = () => {
        }
    }
 
+   const pickDateListener = (selected)=>{
+      const request =  {
+        date: selected
+      }
+      setUp.countbyDate(request).then(response => {
+        setcountbyDay(response.currentCount)
+        setdateStatus(response.dateFormat)
+      })
+      console.log(request)
+   }
+   
    const calendarPopup = () =>{
     const date = new Date
     return (
@@ -159,8 +173,9 @@ const SetUpworkPlace = () => {
           position="right center">
         <DayPicker className='datepicker'
             fromDate={date} toYear={2030}
-            mode="single"
+            mode="single" 
             required
+            onDayClick={(selected)=>pickDateListener(selected)}
             selected={selectedDay}
             onSelect={setSelectedDay}
             captionLayout="dropdown"

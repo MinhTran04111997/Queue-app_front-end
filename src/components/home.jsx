@@ -34,9 +34,6 @@ const Home = () => {
         setnewPhonenumber(event.target.value)
     }
     const addNewcustomer = async (event)=>{
-        //const dateFormat=format(new Date(selectedDay), 'MM-dd-yyyy')
-        //const date = new Date(dateFormat)
-        //date.setDate(date.getDate()+1)
         event.preventDefault()
         if( verify !== null && validator.isMobilePhone(newPhonenumber) && newPhonenumber.length>5 && selectedDay){
             seterrorMessage()
