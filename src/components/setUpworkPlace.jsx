@@ -13,6 +13,7 @@ import 'react-day-picker/dist/style.css'
 import fi from 'date-fns/locale/fi'
 import { FaRegCalendarAlt } from 'react-icons/fa'
 import queryString from 'query-string'
+import {format} from 'date-fns'
 
 const SetUpworkPlace = () => {
   const [serviceName, setserviceName]=useState('')
@@ -39,7 +40,6 @@ const SetUpworkPlace = () => {
             setIsActiveList(response.isActiveList)
         })
   },[])
-
   const handleNameChange = (event) => {
     console.log(event.target.value)
     setserviceName(event.target.value)
@@ -112,6 +112,10 @@ const SetUpworkPlace = () => {
        serviceListcopy.push(service.name.toUpperCase())
     })
    const descriptionDisplay = () =>{
+    const newDate = new Date(selectedDay)
+    const dateFormat = format(newDate, 'MM-dd-yyyy')
+    console.log(dateFormat)
+    console.log(currentCount[verify])
        if(verify !== null){
         return(
             <div>
@@ -137,9 +141,9 @@ const SetUpworkPlace = () => {
               setUpActive(serviceList[verify].id, verify);
             }}
             />
-            <Link className='btnWorkspace' to={`/workspace/${serviceList[verify].id}?date=${dateStatus == null? "":dateStatus}`}>
-                Tên Dịch Vụ: <h1>{serviceListcopy[verify]}</h1>  Tổng Khách Hàng: <h2>{selectedDay==null? currentCount[verify]: countbyDay[verify]}</h2>
-                Ngày: <h2>{dateStatus}</h2>
+            <Link className='btnWorkspace' to={`/workspace/${serviceList[verify].id}?date=${dateFormat}`}>
+                Tên Dịch Vụ: <h1>{serviceListcopy[verify]}</h1>  Tổng Khách Hàng: <h2>{currentCount[verify]}</h2>
+                Ngày: <h2>{dateFormat}</h2>
             </Link>
             <Popup trigger={<button className='btn btn-primary'> EDIT </button>} 
               position="right center">
@@ -195,7 +199,7 @@ const SetUpworkPlace = () => {
                 <textarea value={serviceDescription} onChange={handleContentChange} className='description' rows="7" placeholder='Mô Tả' required></textarea>
             </div>
             <button className='btn btn-primary' type='submit'>THÊM</button>
-        </form>
+      </form>
         <div className='container_list'>
           {disPlay()}
           <div className='popup'>{calendarPopup()}</div>

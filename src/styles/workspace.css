@@ -1,12 +1,12 @@
 .wrapper{
-    width: fit-content;
+    display:block;
+    width: max-content;
     padding: 1rem;
     margin: 1rem;
 }  
 .container1{
     width: fit-content;
-    padding: 1rem;
-    margin: 1rem;
+    
 }
 .wrapper h3{
     margin: 1rem
@@ -27,10 +27,31 @@ button{
   color: black  
 }
 
+.resetBtn{
+    margin-top: 1rem;
+}
+.box{
+  width: 110%;
+  border: 1px solid var(--color-primary);
+  border-radius: 10px 10px 10px 10px;
+  color: var(--color-primary);
+}
+
+.box1{
+    display: grid; 
+    color: var(--color-primary);
+  }
+.info{
+    margin: 10%;
+}
+
+.white{
+    color: white;
+}
+
+
 /*Mobile Layout*/
 /*@media(max-width: 641px){*/
     @media(max-width: 854px){
-        .wrapper{
-            
-        }
+        
     }

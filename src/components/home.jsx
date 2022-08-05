@@ -14,6 +14,7 @@ import validator from 'validator'
 const Home = () => {
     const [services,setServices] = useState([])
     const [newPhonenumber, setnewPhonenumber]= useState('')
+    const [name, setName]= useState('')
     const [verify, setVerify]=useState(null)
     const [active, setActive]= useState('')
     const [selectedDay, setSelectedDay] = useState();
@@ -29,25 +30,35 @@ const Home = () => {
                 setServices(initialServices)
             })
     },[])
+
     const handleNumberChange =  (event) => {
         console.log(event.target.value)
         setnewPhonenumber(event.target.value)
     }
+
+    const handleNameChange =  (event) => {
+        console.log(event.target.value)
+        setName(event.target.value)
+    }
+
     const addNewcustomer = async (event)=>{
+        const date = new Date()
         event.preventDefault()
-        if( verify !== null && validator.isMobilePhone(newPhonenumber) && newPhonenumber.length>5 && selectedDay){
+        if( verify !== null && validator.isMobilePhone(newPhonenumber) && newPhonenumber.length>5 ){
             seterrorMessage()
             const customerObject ={
+                name: name,
                 phonenumber: newPhonenumber,
                 services: services[verify].name,
                 verify: verify,
-                date: selectedDay
+                date: date
             }
             homeService
                 .cusTomer(customerObject)
                 .then((response)=>{
                     setRegisterMessage(response.message)
                     setnewPhonenumber('')
+                    setName('')
                 })
         }else{
             seterrorMessage('invalid mobile phone or have not chosen a service and date')
@@ -119,13 +130,18 @@ const Home = () => {
         {registerMessage && <p className='success'>{registerMessage}</p>}
         <div className='btnList'>
             {displayService()}
-            <div className='popup'>{calendarPopup()}</div>
+            {/* <div className='popup'>{calendarPopup()}</div> */}
         </div>
         {descriptionDisplay()}
         <form className='form' onSubmit={addNewcustomer} >
             <div>
-                <h1>Số Điện Thoại</h1>
-                <input value={newPhonenumber} onChange={handleNumberChange} placeholder='Phone Number' required />
+                <h1>Vui Lòng Diền Thông Tin</h1>
+                <div className='input'>
+                    <input value={newPhonenumber} onChange={handleNumberChange} placeholder='Số Điện Thoại' required />                    
+                </div>
+                <div className='input2'>
+                    <input value={name} onChange={handleNameChange} placeholder='Tên' required />
+                </div>
             </div>
             <button className='btn btn-primary' type='submit'>Đăng Kí</button>
         </form>

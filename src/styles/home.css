@@ -72,6 +72,14 @@ h1{
     color: var(--color-primary);
     margin-bottom: 1rem;
 }
+.input{
+    margin-top: 5%;
+    margin-left: 3%;
+}
+.input2{
+    margin-top: 2%;
+    margin-left: 3%;
+}
 /*====================MEDIA QUERIES(MEDIUM DEVICES)==============*/
 
 @media screen and (max-width: 1024px) {
