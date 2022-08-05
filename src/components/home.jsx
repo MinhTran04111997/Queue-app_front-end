@@ -9,7 +9,7 @@ import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/dist/style.css'
 import fi from 'date-fns/locale/fi'
 import validator from 'validator' 
-
+import {format} from 'date-fns'
 
 const Home = () => {
     const [services,setServices] = useState([])
@@ -43,6 +43,7 @@ const Home = () => {
 
     const addNewcustomer = async (event)=>{
         const date = new Date()
+        const dateFormat = format(date, 'MM-dd-yyyy')
         event.preventDefault()
         if( verify !== null && validator.isMobilePhone(newPhonenumber) && newPhonenumber.length>5 ){
             seterrorMessage()
@@ -51,7 +52,7 @@ const Home = () => {
                 phonenumber: newPhonenumber,
                 services: services[verify].name,
                 verify: verify,
-                date: date
+                date: dateFormat
             }
             homeService
                 .cusTomer(customerObject)
@@ -77,9 +78,11 @@ const Home = () => {
         return(
             <div>
                 <button className='service_detail'>
-                <h4>Service Name: {serviceList[verify]}</h4>
+                <h4>Dịch Vụ Công: {serviceList[verify]}</h4>
                  <br/>
-                {descriptionList[verify]}
+                 <p>{descriptionList[verify]}</p>               
+                <br />
+                <h4>Số Hiện Tại: {services[verify].currentNumber}</h4>
                 </button>
             </div>
         )
@@ -126,13 +129,13 @@ const Home = () => {
         )
     }
   return (
-    <div className='container-home'>
-        {registerMessage && <p className='success'>{registerMessage}</p>}
+    <div className='container-home'>        
         <div className='btnList'>
             {displayService()}
             {/* <div className='popup'>{calendarPopup()}</div> */}
         </div>
         {descriptionDisplay()}
+        {registerMessage && <h4 className='success'>{registerMessage}</h4>}
         <form className='form' onSubmit={addNewcustomer} >
             <div>
                 <h1>Vui Lòng Diền Thông Tin</h1>
