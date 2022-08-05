@@ -28,11 +28,11 @@ const App = () =>{
         <div className='container'>
             <nav id='wrapper'>
                 <div id='c1'>
-                <Link  id='home'  to="/">HOME</Link>
-                <Link className='btn btn-primary' id='workspace' to={"/workspace"}>WORKSPACE</Link>
+                <Link  id='home'  to="/">TRANG CHỦ</Link>
+                <Link className='btn btn-primary' id='workspace' to={"/workspace"}>TRANG DÀNH CHO CÁN BỘ</Link>
                 </div>
-                <Link id='c2' className='btn btn-primary'  to="/login">lOG IN</Link>
-                <button id='c2' className='btn btn-primary' onClick={()=>{logOutListener()}}>LOG OUT</button>
+                <Link id='c2' className='btn btn-primary'  to="/login">ĐĂNG NHẬP</Link>
+                <button id='c2' className='btn btn-primary' onClick={()=>{logOutListener()}}>ĐĂNG XUẤT</button>
             </nav>
             <Routes>
                 <Route path="/workspace/:id" element={isAuthenticated? <Workspace id={id} />: <Navigate to= "/login"/>} />

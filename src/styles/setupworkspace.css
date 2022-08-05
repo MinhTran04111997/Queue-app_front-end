@@ -29,3 +29,15 @@
 .service_detail_setup{
     margin-left: 2rem;
 }
+
+/*Mobile Layout*/
+/*@media(max-width: 641px){*/
+    @media(max-width: 854px){
+        .container_setup{
+            display:inline-table;
+        }
+        .container_list{
+            display: flex;
+            margin: 30%;
+        }
+    }

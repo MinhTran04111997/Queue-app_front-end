@@ -18,3 +18,17 @@
     padding: 2rem;
 }
 
+/*Mobile Layout*/
+/*@media(max-width: 641px){*/
+    @media(max-width: 854px){
+        #c1,#c2,#c3{
+            display: block;
+        }
+        #c1{
+            font-size: 60% 
+        }
+        #c2{
+            font-size: 60%;
+            float: left;
+        }
+    }

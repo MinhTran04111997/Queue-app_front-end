@@ -13,7 +13,7 @@
     
 }
 .wrapper> h1, h3{
-    font-size: 5rem;
+    font-size: 4rem;
     width: max-content;
     display: inline-block;
     color: var(--color-primary);
@@ -27,11 +27,10 @@ button{
   color: black  
 }
 
-@media screen and (max-width: 600px) {
-    .wrapper> h3{
-       margin-left: 6rem;
+/*Mobile Layout*/
+/*@media(max-width: 641px){*/
+    @media(max-width: 854px){
+        .wrapper{
+            
+        }
     }
-    .wrapper> h1{
-        margin-right:rem;
-    }
-}

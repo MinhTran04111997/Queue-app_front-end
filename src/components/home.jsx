@@ -77,7 +77,7 @@ const Home = () => {
     const displayService =()=>{
         return (
             <div>
-                <DropdownButton id="dropdown-basic-button" title={verify === null? "Choose a service": serviceList[verify]}>                
+                <DropdownButton id="dropdown-basic-button" title={verify === null? "Chọn Dịch Vụ": serviceList[verify]}>                
                 {services.map((service,i)=>{
                     if(service.isActive){
                         return(
@@ -91,7 +91,7 @@ const Home = () => {
                 })}
                 <Dropdown.Item onClick={()=>{
                     setVerify(null)
-                }}>NONE</Dropdown.Item>
+                }}>Trống</Dropdown.Item>
             </DropdownButton>
             </div>
         )
@@ -124,10 +124,10 @@ const Home = () => {
         {descriptionDisplay()}
         <form className='form' onSubmit={addNewcustomer} >
             <div>
-                <h1>PHONE NUMBER</h1>
+                <h1>Số Điện Thoại</h1>
                 <input value={newPhonenumber} onChange={handleNumberChange} placeholder='Phone Number' required />
             </div>
-            <button className='btn btn-primary' type='submit'>submit</button>
+            <button className='btn btn-primary' type='submit'>Đăng Kí</button>
         </form>
         {errorMessage && <p className='error'>{errorMessage}</p>}
     </div>

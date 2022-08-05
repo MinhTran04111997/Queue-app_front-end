@@ -91,7 +91,7 @@ const SetUpworkPlace = () => {
 
   const disPlay =()=>{
       return(
-        <DropdownButton id="dropdown-basic-button" title={verify === null? "Choose a service": serviceList[verify].name}>
+        <DropdownButton id="dropdown-basic-button" title={verify === null? "Chọn Dịch Vụ": serviceList[verify].name}>
         {serviceList.map((service,i) =>{
           return(
               <Dropdown.Item key={i}  onClick={()=> {
@@ -137,8 +137,8 @@ const SetUpworkPlace = () => {
             }}
             />
             <Link className='btnWorkspace' to={`/workspace/${serviceList[verify].id}`}>
-                Service Name: <h1>{serviceListcopy[verify]}</h1>  Total Queue: <h2>{selectedDay==null? currentCount[verify]: countbyDay[verify]}</h2>
-                Date: <h2>{dateStatus}</h2>
+                Tên Dịch Vụ: <h1>{serviceListcopy[verify]}</h1>  Tổng Khách Hàng: <h2>{selectedDay==null? currentCount[verify]: countbyDay[verify]}</h2>
+                Ngày: <h2>{dateStatus}</h2>
             </Link>
             <Popup trigger={<button className='btn btn-primary'> EDIT </button>} 
               position="right center">
@@ -189,11 +189,11 @@ const SetUpworkPlace = () => {
     <div className='container_setup'>
       <form onSubmit={addService} >
             <div>
-                <h4>SERVICE NAME</h4>
-                <input value={serviceName} onChange={handleNameChange} placeholder='Service Name' required />
-                <textarea value={serviceDescription} onChange={handleContentChange} className='description' rows="7" placeholder='Description' required></textarea>
+                <h4>TÊN DỊCH VỤ</h4>
+                <input value={serviceName} onChange={handleNameChange} placeholder='Tên Dịch Vụ' required />
+                <textarea value={serviceDescription} onChange={handleContentChange} className='description' rows="7" placeholder='Mô Tả' required></textarea>
             </div>
-            <button className='btn btn-primary' type='submit'>ADD</button>
+            <button className='btn btn-primary' type='submit'>THÊM</button>
         </form>
         <div className='container_list'>
           {disPlay()}

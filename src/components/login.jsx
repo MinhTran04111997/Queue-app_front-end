@@ -33,7 +33,7 @@ const Login = ()=> {
         <Notification message={errorMessage} />
         <form onSubmit={handleLogin}>
         <div>
-          username
+          Tên Đăng Nhập
             <input
             type="text"
             value={username}
@@ -42,7 +42,7 @@ const Login = ()=> {
           />
         </div>
         <div>
-          password
+          Mật Khẩu
             <input
             type="password"
             value={password}
@@ -50,7 +50,7 @@ const Login = ()=> {
             onChange={({ target }) => setPassword(target.value)}
           />
         </div>
-        <button className='btn btn-primary' type="submit">login</button>
+        <button className='btn btn-primary' type="submit">Đăng Nhập</button>
       </form>
       </div>
   )
