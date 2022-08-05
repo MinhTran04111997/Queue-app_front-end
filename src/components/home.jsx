@@ -62,7 +62,7 @@ const Home = () => {
                     setName('')
                 })
         }else{
-            seterrorMessage('invalid mobile phone or have not chosen a service and date')
+            seterrorMessage('Số điện thoại không hợp lệ hoặc chưa chọn dịch vụ')
         }   
         
     }
