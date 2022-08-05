@@ -1,11 +1,15 @@
 import React from 'react'
 import workSpace from '../services/workplace_services'
 import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import '../styles/workspace.css'
+import queryString from 'query-string'
 
 const Workspace = ({id}) => {
   const [service, setService]=useState({})
   const [totalQueue, settotalQueue]= useState()
+  const location = useLocation()
+  const date = queryString.parse(location.search).date
   useEffect(()=>{
     const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser')
     if (loggedUserJSON) {
@@ -13,7 +17,7 @@ const Workspace = ({id}) => {
       workSpace.setToken(user.token)
     }
     workSpace
-        .getAll(`/api/workspace/getbyID/${id}`)
+        .getAll(`/api/workspace/getbyID/${id}?date=${date}`)
         .then(services =>{
             setService(services.service)
             settotalQueue(services.totalQueue)

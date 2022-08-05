@@ -103,7 +103,7 @@ const Home = () => {
             <Popup trigger={<button className='btn btn-primary'> <FaRegCalendarAlt/></button>} 
               position="right center">
             <DayPicker className='datepicker'
-                fromDate={date} toYear={2030}
+                fromDate={date} toDate={date}
                 mode="single"
                 required
                 selected={selectedDay}

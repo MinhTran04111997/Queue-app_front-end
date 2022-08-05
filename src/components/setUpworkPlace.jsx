@@ -12,6 +12,7 @@ import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/dist/style.css'
 import fi from 'date-fns/locale/fi'
 import { FaRegCalendarAlt } from 'react-icons/fa'
+import queryString from 'query-string'
 
 const SetUpworkPlace = () => {
   const [serviceName, setserviceName]=useState('')
@@ -136,7 +137,7 @@ const SetUpworkPlace = () => {
               setUpActive(serviceList[verify].id, verify);
             }}
             />
-            <Link className='btnWorkspace' to={`/workspace/${serviceList[verify].id}`}>
+            <Link className='btnWorkspace' to={`/workspace/${serviceList[verify].id}?date=${dateStatus == null? "":dateStatus}`}>
                 Tên Dịch Vụ: <h1>{serviceListcopy[verify]}</h1>  Tổng Khách Hàng: <h2>{selectedDay==null? currentCount[verify]: countbyDay[verify]}</h2>
                 Ngày: <h2>{dateStatus}</h2>
             </Link>
@@ -172,7 +173,7 @@ const SetUpworkPlace = () => {
         <Popup trigger={<button className='btn btn-primary'> <FaRegCalendarAlt/></button>} 
           position="right center">
         <DayPicker className='datepicker'
-            fromDate={date} toYear={2030}
+            fromDate={date} toDate={date}
             mode="single" 
             required
             onDayClick={(selected)=>pickDateListener(selected)}
