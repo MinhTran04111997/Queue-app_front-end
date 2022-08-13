@@ -1,6 +1,10 @@
+
 #wrapper{
     overflow:auto;
-    margin-bottom: 10rem;
+    padding-bottom: 20rem;
+    background-image: url('../asset/logo.png');
+    background-size: 100% 100%;
+    background-repeat:no-repeat
 }
 #c1{
     font-size: 25px;
@@ -32,6 +36,7 @@
             float: left;
         }
         #wrapper{
-            margin-bottom: 4rem;
+            padding-bottom: 4rem;
+            background-image: none;
         }
     }

@@ -25,15 +25,15 @@ const App = () =>{
         window.location.reload()
       }
     return (
-        <div className='container'>
-            <nav id='wrapper'>
+        <div className='container'>          
+          <nav id='wrapper'>
                 <div id='c1'>
                 <Link  id='home'  to="/">TRANG CHỦ</Link>
                 <Link className='btn btn-primary' id='workspace' to={"/workspace"}>TRANG DÀNH CHO CÁN BỘ</Link>
                 </div>
                 <Link id='c2' className='btn btn-primary'  to="/login">ĐĂNG NHẬP</Link>
                 <button id='c2' className='btn btn-primary' onClick={()=>{logOutListener()}}>ĐĂNG XUẤT</button>
-            </nav>
+          </nav>
             <Routes>
                 <Route path="/workspace/:id" element={isAuthenticated? <Workspace id={id} />: <Navigate to= "/login"/>} />
                 <Route path="/workspace" element={isAuthenticated? <SetUpworkPlace/>: <Navigate to= "/login"/> } /> 
