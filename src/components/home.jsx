@@ -138,7 +138,7 @@ const Home = () => {
         {registerMessage && <h4 className='success'>{registerMessage}</h4>}
         <form className='form' onSubmit={addNewcustomer} >
             <div>
-                <h1>Vui Lòng Diền Thông Tin</h1>
+                <h1>Vui Lòng Điền Thông Tin</h1>
                 <div className='input'>
                     <input value={newPhonenumber} onChange={handleNumberChange} placeholder='Số Điện Thoại' required />                    
                 </div>

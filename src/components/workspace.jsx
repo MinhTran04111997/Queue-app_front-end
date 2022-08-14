@@ -66,8 +66,8 @@ const displayCustomerInfo = () =>{
         {customerInfo && displayCustomerInfo()}
       </div>
       
-      <button className='btn btn-primary' onClick={clickNext}>NEXT</button>
-      <div className='resetBtn'><button className='btn btn-primary' onClick={clickReset}>RESET</button></div>
+      <button className='btn btn-primary' onClick={clickNext}>Tiếp Theo</button>
+      <div className='resetBtn'><button className='btn btn-primary' onClick={clickReset}>Thiết Lập Lại</button></div>
     </div>
   )
 }
