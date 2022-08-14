@@ -29,7 +29,13 @@ const App = () =>{
         popup:{
           visibility: isAuthenticated ? "visible" : "hidden",
         }
-      };
+      }
+
+      const styles2 = {
+        popup:{
+          visibility: isAuthenticated ? "hidden" : "visible",
+        }
+      }
     return (
         <div className='container'>          
           <nav id='wrapper'>
@@ -37,8 +43,8 @@ const App = () =>{
                 <Link  id='home'  to="/">TRANG CHỦ</Link>
                 <Link className='btn btn-primary' id='workspace' to={"/workspace"} style={styles.popup}>TRANG DÀNH CHO CÁN BỘ</Link>
                 </div>
-                <Link id='c2' className='btn btn-primary'  to="/login">ĐĂNG NHẬP</Link>
-                <button id='c2' className='btn btn-primary' onClick={()=>{logOutListener()}} style={styles.popup}>ĐĂNG XUẤT</button>
+                <Link id='c2' className='btn btn-primary'  to="/login" style={styles2.popup}>ĐĂNG NHẬP</Link>
+                <button id='c3' className='btn btn-primary' onClick={()=>{logOutListener()}} style={styles.popup}>ĐĂNG XUẤT</button>
           </nav>
             <Routes>
                 <Route path="/workspace/:id" element={isAuthenticated? <Workspace id={id} />: <Navigate to= "/login"/>} />

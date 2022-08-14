@@ -15,6 +15,10 @@
 
 #c2{
     margin-top: 1rem;
+}
+
+#c3{
+    margin-top: 1rem;
     margin-right: 2rem;
     float:right;
 }
@@ -35,6 +39,10 @@
         #c2{
             font-size: 60%;
             float: left;
+            margin-left: 2rem;
+        }
+        #c3{
+            font-size: 60%;
             margin-left: 2rem;
         }
         #wrapper{
