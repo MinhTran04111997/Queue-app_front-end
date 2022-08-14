@@ -138,6 +138,9 @@ img{
         width: var(--container-width-sm);
         
     }
+    body{
+        background-image: none
+    }
 
     section > h2{
         margin-bottom: 2rem;

@@ -94,6 +94,6 @@ h1{
 /*====================MEDIA QUERIES(SMALL DEVICES)==============*/
 @media screen and (max-width: 600px) {
     .container-home{
-        width: fit-content;
+        background-color: transparent;
      }
 }

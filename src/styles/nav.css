@@ -1,5 +1,6 @@
 
 #wrapper{
+    width: 100%;
     overflow:auto;
     padding-bottom: 20rem;
     background-image: url('../asset/logo.png');
@@ -14,7 +15,7 @@
 
 #c2{
     margin-top: 1rem;
-    margin-left: 2rem;
+    margin-right: 2rem;
     float:right;
 }
 
@@ -34,11 +35,13 @@
         #c2{
             font-size: 60%;
             float: left;
+            margin-left: 2rem;
         }
         #wrapper{
+            width: 100%;
             padding-bottom: 12rem;
             background-image: url('../asset/mobile2.png');
-            background-size: cover;
+            background-size: 100% 100%;
             background-repeat:no-repeat
         }
     }
