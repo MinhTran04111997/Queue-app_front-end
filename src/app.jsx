@@ -1,3 +1,4 @@
+import { style } from '@mui/system'
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Link, Route, Routes, Navigate, useMatch  } from 'react-router-dom'
 import Home from './components/home'
@@ -24,15 +25,20 @@ const App = () =>{
         window.localStorage.removeItem('loggedNoteappUser')
         window.location.reload()
       }
+      const styles = {
+        popup:{
+          visibility: isAuthenticated ? "visible" : "hidden",
+        }
+      };
     return (
         <div className='container'>          
           <nav id='wrapper'>
                 <div id='c1'>
                 <Link  id='home'  to="/">TRANG CHỦ</Link>
-                <Link className='btn btn-primary' id='workspace' to={"/workspace"}>TRANG DÀNH CHO CÁN BỘ</Link>
+                <Link className='btn btn-primary' id='workspace' to={"/workspace"} style={styles.popup}>TRANG DÀNH CHO CÁN BỘ</Link>
                 </div>
                 <Link id='c2' className='btn btn-primary'  to="/login">ĐĂNG NHẬP</Link>
-                <button id='c2' className='btn btn-primary' onClick={()=>{logOutListener()}}>ĐĂNG XUẤT</button>
+                <button id='c2' className='btn btn-primary' onClick={()=>{logOutListener()}} style={styles.popup}>ĐĂNG XUẤT</button>
           </nav>
             <Routes>
                 <Route path="/workspace/:id" element={isAuthenticated? <Workspace id={id} />: <Navigate to= "/login"/>} />

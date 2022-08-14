@@ -80,6 +80,11 @@ h1{
     margin-top: 2%;
     margin-left: 3%;
 }
+.container-home{
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px 10px 10px 10px;
+}
 /*====================MEDIA QUERIES(MEDIUM DEVICES)==============*/
 
 @media screen and (max-width: 1024px) {

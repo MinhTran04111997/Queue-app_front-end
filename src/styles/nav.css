@@ -36,7 +36,9 @@
             float: left;
         }
         #wrapper{
-            padding-bottom: 4rem;
-            background-image: none;
+            padding-bottom: 12rem;
+            background-image: url('../asset/mobile2.png');
+            background-size: cover;
+            background-repeat:no-repeat
         }
     }

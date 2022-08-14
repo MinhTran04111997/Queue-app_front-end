@@ -48,6 +48,10 @@ button{
 .white{
     color: black;
 }
+.container-setup{
+    background-color: white;
+    padding: 1rem;
+}
 
 
 /*Mobile Layout*/

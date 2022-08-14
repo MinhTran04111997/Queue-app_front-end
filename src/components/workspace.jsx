@@ -54,7 +54,7 @@ const displayCustomerInfo = () =>{
 }
 
   return (
-    <div >
+    <div className='container-setup'>
       <div className='wrapper' >
         <h1 >{service.name}</h1>
         <div className='box1'>
